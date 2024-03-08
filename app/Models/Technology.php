@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Technology extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'slug'
+    ];
+
+    /*
+    
+        Relationship
+    
+    */
+    // Many-to-many con Projects
+    public function projects() {
+        return $this->belongsToMany(Technology::class);
+    }
 }
