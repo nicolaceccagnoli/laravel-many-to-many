@@ -33,6 +33,7 @@ class StoreProjectRequest extends FormRequest
             'slug'=> 'nullable|max:255',
             'content' => 'required|max:1024',
             'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|array|exists:technologies,id'
         ];
     }
 

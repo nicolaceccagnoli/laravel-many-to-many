@@ -20,7 +20,7 @@
                         <label for="title" class="form-label">Nome Progetto</label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Inserisci il nome del nuovo progetto"
                             maxlength="1024" value="{{$project->title, old('title') }}">
-                        @error('thumb')
+                        @error('title')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
@@ -28,7 +28,7 @@
                         <label for="content" class="form-label">Descrizione</label>
                         <input type="text" class="form-control @error('content') is-invalid @enderror" id="content" name="content" placeholder="Inserisci la descrizione del progetto"
                             maxlength="1024" value="{{$project->content, old('content') }}">
-                        @error('thumb')
+                        @error('content')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
@@ -38,7 +38,7 @@
                             <option
                                 {{ old('type_id', $project->type_id) == null ? 'selected' : '' }} 
                                 value="">
-                                Seleziona una Tecnologia...
+                                Seleziona un Linguaggio...
                             </option>
                             @foreach ($types as $singleType)
                                 <option {{ old('type_id', $project->type_id) == $singleType->id ? 'selected' : '' }} 
@@ -47,6 +47,28 @@
                                 </option>
                             @endforeach
                         </select>
+
+                        <div class="mb-3">
+                            @foreach ($technologies as $technology)
+                                <div class="form-check form-check-inline">
+                                    <input
+                                        {{-- Se c'è l'old, vuol dire che c'è stato un errore --}}
+                                        @if ($errors->any())
+                                            {{-- Faccio le verifiche sull'old --}}
+                                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}
+                                        @else
+                                            {{-- Faccio le verifiche sulla collezione --}}
+                                            {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}
+                                        @endif
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="technology-{{ $technology->id }}"
+                                        name="technologies[]"
+                                        value="{{ $technology->id }}">
+                                    <label class="form-check-label" for="technology-{{ $technology->id }}">{{ $technology->title }}</label>
+                                </div>
+                            @endforeach
+                        </div>
 
                         <div>
                             <button type="submit" class="btn btn-success w-100">

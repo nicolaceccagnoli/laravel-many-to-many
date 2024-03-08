@@ -19,13 +19,13 @@
 
                             {{-- Per ogni progetto che ho realizzato con la relativa tecnologia 
                             stampo un link che mi riporta al singolo progetto --}}
-                            {{-- @foreach ($technology->projects as $project)
+                            @foreach ($technology->projects as $project)
                                 <li class="text-start">
                                     <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}" class="mb-3"> 
                                         {{ $project->title }}
                                     </a>
                                 </li>
-                            @endforeach --}}
+                            @endforeach
 
                         </ul>
 

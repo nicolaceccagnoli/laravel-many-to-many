@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 // Models
 use App\Models\Project;
 use App\Models\Type;
-
+use App\Models\Technology;
 
 // Form Request
 use App\Http\Requests\StoreProjectRequest;
@@ -69,11 +69,13 @@ class ProjectController extends Controller
      */
     public function edit(string $slug)
     {
+        $technologies = Technology::all();
+
         $types = Type::all();
 
         $project = Project::where('slug', $slug)->firstOrFail();
 
-        return view('admin.projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -88,6 +90,12 @@ class ProjectController extends Controller
         $validatedProjectData['slug'] = Str::slug($validatedProjectData['title']);
 
         $project->update($validatedProjectData);
+
+        if (isset($validatedProjectData['technologies'])) {
+            $project->technologies()->sync($validatedProjectData['technologies']);
+        } else {
+            $project->technologies()->detach();
+        }
 
         return redirect()->route('admin.projects.show',['project'=>$project->slug]);
     }
