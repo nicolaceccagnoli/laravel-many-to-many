@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreTechnologyRequest;
-use App\Http\Requests\UpdateTechnologyRequest;
-use App\Models\Technology;
-
-// Models
-// use App\Models\Technology;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 // Form Request
-// use App\Http\Requests\Technologies\StoreTechnologyRequest;
-// use App\Http\Requests\Technologies\UpdateTechnologyRequest;
+use App\Http\Requests\StoreTechnologyRequest;
+use App\Http\Requests\UpdateTechnologyRequest;
+
+// Models
+use App\Models\Technology;
 
 // Helper
 use Illuminate\Support\Str;
@@ -23,7 +22,9 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $allTechnologies = Technology::all();
+
+        return view('admin.technologies.index', compact('allTechnologies'));
     }
 
     /**

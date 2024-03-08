@@ -9,10 +9,11 @@ export default defineConfig({
             input: [
                 'resources/scss/partials/header.scss',
                 'resources/scss/partials/admin-index.scss',
+                'resources/scss/partials/admin-show.scss',
                 'resources/scss/partials/types-index.scss',
+                'resources/scss/partials/technologies-index.scss',
                 'resources/scss/partials/types-show.scss',
                 'resources/scss/partials/welcome.scss',
-                'resources/scss/partials/admin-show.scss',
                 'resources/scss/partials/dashboard.scss',
                 'resources/scss/partials/login.scss',
                 'resources/scss/partials/register.scss',
