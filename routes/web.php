@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\MainController as AdminMainController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\Typecontroller as AdminTypeController;
 use App\Http\Controllers\Admin\Technology;
+use App\Http\Controllers\TechnologyController as GuestTechnologyController;
+
 
 
 
@@ -44,6 +46,15 @@ Route::prefix('types')
         Route::get('/', [TypeController::class, 'index'])->name('index');
         Route::get('/{type}', [TypeController::class, 'show'])->name('show');
 });
+
+Route::prefix('technologies')
+        ->name('technologies.')
+        ->group(function () {
+
+        Route::get('/', [GuestTechnologyController::class, 'index'])->name('index');
+        Route::get('/{technology}', [GuestTechnologyController::class, 'show'])->name('show');
+});
+
 
 Route::prefix('admin')
     ->name('admin.')
