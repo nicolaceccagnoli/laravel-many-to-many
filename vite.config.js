@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/scss/partials/admin-show.scss',
                 'resources/scss/partials/types-index.scss',
                 'resources/scss/partials/technologies-index.scss',
+                'resources/scss/partials/technologies-show.scss',
                 'resources/scss/partials/types-show.scss',
                 'resources/scss/partials/welcome.scss',
                 'resources/scss/partials/dashboard.scss',

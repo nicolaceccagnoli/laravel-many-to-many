@@ -24,11 +24,11 @@
                             {{ $technology->content }}
                         </p>
 
-                        {{-- <div class="align-self-center">
-                            <a href="{{ route('admin.types.show', ['type' => $singleType->slug]) }}" class="show-button align-self-baseline">
+                        <div class="align-self-center">
+                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->slug]) }}" class="show-button align-self-baseline">
                                 Mostra
                             </a>
-                        </div> --}}
+                        </div>
 
                     </div>
                 </div>

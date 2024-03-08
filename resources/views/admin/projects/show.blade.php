@@ -20,7 +20,7 @@
 
                         @if ($project->type != null)
                             <span>
-                                Tecnologia utilizzata:
+                                Linguaggio/i utilizzato/i:
                             </span>
                             <br>
                             <a href="{{ route('admin.types.show', ['type' => $project->type->slug]) }}"> 
@@ -30,6 +30,20 @@
                             -
                         @endif
 
+                    </div>
+
+                    <div class="mb-3">
+                        <div>
+                        Tecnologie:
+                        <br>
+                        @forelse ($project->technologies as $technology)
+                            <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="badge rounded-pill text-bg-primary">
+                                {{ $technology->title }}
+                            </a>
+                        @empty
+                            -
+                        @endforelse
+                    </div>
                     </div>
 
                     <p>
