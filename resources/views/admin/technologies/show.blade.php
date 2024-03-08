@@ -36,21 +36,53 @@
                             <i class="fa-solid fa-pencil"></i>
                         </a>
 
-                        <form
-                        onsubmit="return confirm('Sicuro di voler eliminare questo elemento ? ...')"
-                        action="{{ route('admin.technologies.destroy', ['technology' => $technology->id]) }}"
-                        method="POST"
-                        class="d-inline-block">
+                        <button class="erase-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $technology->slug }}">
+                            <i class="fa-solid fa-eraser"></i>
+                        </button>
 
-                        @csrf
-                        @method('DELETE')
+                        {{-- Modale per l'eliminazione del progetto --}}
+                        <div class="modal fade" id="staticBackdrop-{{ $technology->slug }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                            Eliminazione Tecnologia
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Sei sicuto di voler eliminare: <b> {{ $technology->title }} </b> ?
+                                    </div>
+                                    <div class="modal-footer">
 
-                            <button type="submit" class="erase-button">
-                                <i class="fa-solid fa-eraser"></i>
-                            </button>
-                        
-                        </form>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
+                                        {{-- Creiamo il form per l'eliminazione che con l'action reindirizza alla rotta destroy del controller, 
+                                        come argomento passo lo slug del singolo progetto--}}
+                                        <form 
+                                        action="{{ route('admin.technologies.destroy', ['technology' => $technology->id]) }}" 
+                                        method="POST">
+                                        {{-- 
+                                            Cross
+                                            Site
+                                            Request
+                                            Forgery
+                                            Genera un input nascosto con un token all'interno per verificare che tutte le richieste
+                                            del front-end provengano dal sito stesso e si usa per le richieste in POST
+                                        --}}
+                                        @csrf
+                                        {{-- Richiamo il metodo DELETE che non può essere inserito nel FORM --}}
+                                        @method('DELETE')
+                                            <button 
+                                            type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Elimina
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
