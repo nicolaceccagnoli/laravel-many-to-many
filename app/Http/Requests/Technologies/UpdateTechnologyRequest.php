@@ -25,7 +25,16 @@ class UpdateTechnologyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|max:64',
+            'slug'=> 'nullable|max:64',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Inserisci un Titolo per la Tecnologia',
+        ];
+    }
+
 }

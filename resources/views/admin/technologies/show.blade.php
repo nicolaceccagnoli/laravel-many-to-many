@@ -30,7 +30,7 @@
                         </ul>
 
                     </div>
-                    {{-- <div class="edit-buttons-container d-flex flex-column align-items-end">
+                    <div class="edit-buttons-container d-flex flex-column align-items-end">
                         
                         <a href="{{ route('admin.technologies.edit', ['technology' => $technology->id]) }}" class="edit-button mb-2">
                             <i class="fa-solid fa-pencil"></i>
@@ -38,21 +38,21 @@
 
                         <form
                         onsubmit="return confirm('Sicuro di voler eliminare questo elemento ? ...')"
-                        action="{{ route('admin.technology.destroy', ['technology' => $technology->id]) }}"
+                        action="{{ route('admin.technologies.destroy', ['technology' => $technology->id]) }}"
                         method="POST"
                         class="d-inline-block">
 
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="erase-button">
-                            <i class="fa-solid fa-eraser"></i>
-                        </button>
+                            <button type="submit" class="erase-button">
+                                <i class="fa-solid fa-eraser"></i>
+                            </button>
                         
                         </form>
 
-                    </div> --}}
-
+                    </div>
+                </div>
             </div>
         </div>
     </div>

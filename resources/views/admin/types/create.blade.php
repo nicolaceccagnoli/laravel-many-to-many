@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Aggiungi una Tecnologia')
+@section('page-title', 'Aggiungi un Linguaggio')
 
 @section('main-content')
     <div class="row g-0">
@@ -8,14 +8,14 @@
             <div class="card">
                 <div class="card-body">
                     <h1>
-                        Aggiungi Tecnologia
+                        Aggiungi Linguaggio
                     </h1>
 
                     <form action="{{ route('admin.types.store')  }} " method="POST">
                         
                         @csrf
 
-                        <label for="title" class="form-label">Nome Tecnologia</label>
+                        <label for="title" class="form-label">Nome Linguaggio</label>
                         <input type="text" class="mb-3 form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Inserisci il nome della tecnologia"
                             maxlength="64" value="{{ old('title') }}">
                         @error('title')

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 // Form Request
-use App\Http\Requests\StoreTechnologyRequest;
-use App\Http\Requests\UpdateTechnologyRequest;
+use App\Http\Requests\Technologies\StoreTechnologyRequest;
+use App\Http\Requests\Technologies\UpdateTechnologyRequest;
 
 // Models
 use App\Models\Technology;
@@ -22,9 +22,9 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        $allTechnologies = Technology::all();
+        $technologies = Technology::all();
 
-        return view('admin.technologies.index', compact('allTechnologies'));
+        return view('admin.technologies.index', compact('technologies'));
     }
 
     /**
@@ -32,7 +32,7 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.technologies.create');
     }
 
     /**
@@ -40,7 +40,14 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $technologyDataRequest = $request->validated();
+
+        $technologyDataRequest['slug'] = Str::slug($technologyDataRequest['title']);
+
+        $technology = Technology::create($technologyDataRequest);
+
+        return redirect()->route('admin.technologies.show',['technology'=>$technology->slug]);
+
     }
 
     /**
@@ -58,15 +65,24 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        return view('admin.technologies.edit', compact('technology'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTechnologyRequest $request, Technology $technology)
+    public function update(UpdateTechnologyRequest $request, string $slug)
     {
-        //
+        $technologyDataRequest = $request->validated();
+
+        $technology = Technology::where('slug', $slug)->firstOrFail();
+
+        $technologyDataRequest['slug'] = Str::slug($technologyDataRequest['title']);
+
+        $technology->update($technologyDataRequest);
+
+        return redirect()->route('admin.technologies.show',['technology'=>$technology->slug]);
+
     }
 
     /**
@@ -74,6 +90,8 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+
+        return redirect()->route('admin.technologies.index');
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'edit progetto')
+@section('page-title', $project->title.' edit')
 
 @section('main-content')
     <div class="row g-0">

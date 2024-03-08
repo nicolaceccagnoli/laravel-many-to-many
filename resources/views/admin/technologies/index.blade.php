@@ -4,15 +4,15 @@
 
 @section('main-content')
 <section id="index-technologies">
-{{-- <div id="add">
-    <a href="{{ route('admin.types.create') }}" class="add-button mb-5">
-        <span>Aggiungi</span>
-        <i class="fa-solid fa-plus"></i>
-    </a>
-</div> --}}
+    <div id="add">
+        <a href="{{ route('admin.technologies.create') }}" class="add-button mb-5">
+            <span>Aggiungi</span>
+            <i class="fa-solid fa-plus"></i>
+        </a>
+    </div>
 
     <div class="row g-0">
-        @foreach ($allTechnologies as $technology)
+        @foreach ($technologies as $technology)
             <div class="col-12 col-xs-6 col-sm-4 col-md-3 mb-3">
                 <div class="my-card m-1">
                     <div class="my-card-body d-flex flex-column justify-content-center h-100">

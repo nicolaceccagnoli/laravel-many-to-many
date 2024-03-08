@@ -34,7 +34,7 @@ class EditTypeRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => 'Inserisci un Titolo per la Tecnologia',
+            'title.required' => 'Inserisci un Titolo per il Linguaggio',
         ];
     }
 
