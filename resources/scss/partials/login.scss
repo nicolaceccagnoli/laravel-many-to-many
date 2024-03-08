@@ -1,0 +1,80 @@
+#log-in{
+    // @if ($errors->any())
+    //     <div class="alert alert-danger">
+    //         <ul>
+    //             @foreach ($errors->all() as $error)
+    //             <li>
+    //                 {{ $error }}
+    //             </li>
+    //             @endforeach
+    //         </ul>
+    //     </div>
+    // @endif
+    padding-top: 40px;
+    .container{
+
+        text-align: center;
+        form{
+            
+            div{
+
+                border: 1px solid rgba(205, 205, 205, 0.508);
+                padding: 20px;
+                border-radius: 15px;
+
+                label{
+                    
+                    display: block;
+                    text-transform: uppercase;
+                    font-weight: bolder;
+                    font-size: 1.3rem;
+                }
+    
+                input{
+                    
+                    border-radius: 8px;
+                    background-color: transparent;
+                    border: 2px solid #001f3f;
+                    padding: 10px 20px;
+                    margin-bottom: 10px;
+                    text-align: center;
+                }
+
+                label{
+    
+                    input{
+                        background-color: #001f3f;
+                    }
+    
+                    span{
+                        
+                        font-size: medium;
+                        text-transform: none;
+                        font-weight: lighter;
+                        color: rgb(0, 0, 0);
+                    }
+                }
+            }
+    
+    
+            div{
+                a{
+                    margin-right: 8px;
+                    color: #001f3f;
+                }
+    
+                button{
+                    background-color: #2ecc71;
+                    text-transform: uppercase;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    border: none;
+                }
+            }
+    
+        }
+    }
+}

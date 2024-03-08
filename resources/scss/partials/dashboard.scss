@@ -1,0 +1,21 @@
+#dashboard{
+
+    padding-top: 40px;
+    .row{
+        .col-12{
+            
+            h1{
+
+                text-transform: uppercase;
+                font-size: 4rem;
+                font-weight: 900;
+                color: #001f3f;
+                margin: 0;
+                span{
+                    color: #2ecc71;
+                }
+            }
+            
+        }
+    }
+}

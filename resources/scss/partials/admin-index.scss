@@ -1,0 +1,81 @@
+#index-admin, #index-guest{
+
+    padding-top: 40px;
+    background-color: #F2F2F2;
+   #add {
+    margin-bottom: 50px;
+    text-align: end;
+
+        .add-button {
+            background-color: #046A4E;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bolder;
+            padding: 10px 16px;
+            text-transform: uppercase;
+            border-radius: 5px;
+        }
+
+        .add-button:hover {
+            background-color: rgb(2, 201, 2);
+            transition: background-color 0.5s ;
+        }
+   } 
+
+
+    .my-card {
+
+        background-color: white;
+        border-radius: 20px;
+        padding: 20px; 
+        height: 350px;
+        box-shadow: 2px -1px 4px 2px #001F3F;
+        position: relative;
+        
+        .my-card-body {
+
+
+            h3{
+                font-size: 1.5rem;
+                font-weight: bolder;
+                color: #001f3f;
+            }
+
+            p{
+                padding: 10px;
+                overflow-y: auto;
+                font-size: 0.9em;
+            }
+            
+            .show-button {
+                background-color: #001f3f;
+                text-decoration: none;
+                padding: 8px 12px;
+                border-radius: 8px;
+                border-width: 0;
+                color: white;
+            }
+    
+            .show-button:hover {
+                background-color: #0371df;
+                transition: background-color 0.5s ;
+            }
+    
+        }
+
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px; // Larghezza della barra di scorrimento
+}
+
+::-webkit-scrollbar-track {
+    background-color: #333333;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00b386;
+    border-radius: 6px;
+}

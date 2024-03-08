@@ -1,0 +1,28 @@
+#welcome{
+
+    padding-top: 80px;
+    .container{
+
+        h1{
+            text-transform: uppercase;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #001f3f;
+            span{
+                color: #2ecc71;
+            }
+        }
+
+        .frame{
+
+            border-radius: 30px;
+            .row{
+
+                min-height: 300px;
+                .col-4{
+                    border: 1px solid gray;
+                }
+            }
+        }
+    }
+}
