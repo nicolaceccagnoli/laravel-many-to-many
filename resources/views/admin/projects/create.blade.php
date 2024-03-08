@@ -30,6 +30,7 @@
                                 {{ $message }}
                             </div>
                         @enderror
+                        
                         <label for="type_id" class="form-label">Tecnologia</label>
                         <select id="type_id" name class="form-select">
                             <option 
