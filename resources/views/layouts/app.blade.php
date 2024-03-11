@@ -19,24 +19,20 @@
             <nav>
                 <ul class="">
                     <li>
-                        <a href="/">Home</a>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                         </li>
                         <li>
-
                             <a href="{{ route('admin.projects.index') }}">I nostri progetti</a>
-
                         </li>
                         <li>
-
                             <a href="{{ route('admin.types.index') }}">I linguaggi</a>
-
                         </li>
                         <li>
-
                             <a href="{{ route('admin.technologies.index') }}">Le tecnologie che utilizziamo</a>
-
                         </li>
                     </li>
                 </ul>

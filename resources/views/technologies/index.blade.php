@@ -5,9 +5,9 @@
 @section('main-content')
 
 <section id="guest-index-technologies">
-    <div class="row g-0 justify-content-around ">
+    <div class="row g-0 justify-content-around">
         @foreach ($technologies as $technology)
-            <div class="col-12 col-xs-6 col-sm-4 col-md-3 mb-3">
+            <div class="col-12 d-flex justify-content-center col-xs-6 col-sm-4 col-md-3 mb-3">
                 <div class="my-card m-1">
                     <div class="my-card-body d-flex flex-column justify-content-center h-100">
                         <h3 class="text-center">

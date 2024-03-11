@@ -15,41 +15,50 @@
         <header>
             <div class="container">
                 
-            <nav>
-                <ul class="">
-                    <li>
-                        <a href="/">Home</a>
+                <nav>
+
+                    <ul>
+
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
 
                         @auth
-                            <li class="nav-item">
+                            <li>
                                 <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                             </li>
                         @else
                             <li>
-
                                 <a href="{{ route('projects.index') }}">I nostri progetti</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('technologies.index') }}">Le nostre Tecnologie</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('types.index') }}">I nostri linguaggi</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('register') }}">Register</a>
-
                             </li>
                         @endauth
-                    </li>
-                </ul>
+                        
+                    </ul>
 
-                @auth
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
 
-                        <button type="submit" class="">
-                            Log Out
-                        </button>
-                    </form>
-                @endauth
-                
-                
-            </nav>
+                            <button type="submit" class="">
+                                Log Out
+                            </button>
+                        </form>
+                    @endauth
+                    
+                </nav>
+
             </div>
         </header>
 
