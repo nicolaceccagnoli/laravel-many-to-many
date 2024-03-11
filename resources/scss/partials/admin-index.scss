@@ -32,9 +32,28 @@
         width: 250px;
         box-shadow: 2px -1px 4px 2px #001F3F;
         position: relative;
+
+        &:hover {
+            background-color: #0263FE;
+            box-shadow: 2px -1px 4px 2px #967BEE;
+            color: white;
+            transition: all 0.5s;
+
+            &:hover h3{
+                color: white;
+            }
+
+            &:hover .show-button {
+                background-color: #00b386;
+            }
+
+            &:hover .show-button:hover {
+                background-color: #967BEE;
+            }
+            
+        }
         
         .my-card-body {
-
 
             h3{
                 font-size: 1.5rem;
@@ -58,7 +77,7 @@
             }
     
             .show-button:hover {
-                background-color: #0371df;
+                background-color: #00b386;
                 transition: background-color 0.5s ;
             }
     
@@ -73,6 +92,7 @@
 
 ::-webkit-scrollbar-track {
     background-color: #333333;
+    border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
