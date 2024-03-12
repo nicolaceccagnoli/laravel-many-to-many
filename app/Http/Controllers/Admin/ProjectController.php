@@ -154,6 +154,13 @@ class ProjectController extends Controller
     public function destroy(string $slug)
     {   
         $project = Project::where('slug', $slug)->firstOrFail();
+
+        // Se quando elimino il project il valore della colonna cover_img è diverso da null
+        if ($project->cover_img != null) {
+            // Elimino la cover da storage
+            Storage::disk('public')->delete($project->cover_img);
+        }
+        
         $project->delete();
 
         return redirect()->route('admin.projects.index');

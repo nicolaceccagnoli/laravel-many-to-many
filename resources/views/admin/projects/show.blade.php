@@ -32,6 +32,15 @@
 
                     </div>
 
+                    {{-- Se il valore della colonna cover_img del singolo project è diverso da null --}}
+                    @if ($project->cover_img != null)
+                        <div class="mb-3">
+
+                            <img src="{{ asset('storage/'.$project->cover_img) }}" alt="{{ $project->title }}">
+
+                        </div>
+                    @endif
+
                     <div class="mb-3">
                         <div>
                             Tecnologie:

@@ -13,6 +13,11 @@
 
             .my-card-body {
 
+                img {
+                    max-width: 100%;
+                    object-position: center;
+                }
+
                 span {
                     margin-left: 5px;
                 }

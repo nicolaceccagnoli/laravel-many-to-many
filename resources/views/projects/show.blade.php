@@ -16,49 +16,58 @@
                         {{ $project->content }}
                     </p>
 
-                        <div class="mb-3">
+                    <div class="mb-3">
 
-                            @if ($project->type != null)
+                        @if ($project->type != null)
 
-                                <span>
-                                    Linguaggio utilizzata:
-                                </span>
-                                <br>
-                                <a href="{{ route('types.show', ['type' => $project->type->slug]) }}"> 
-                                    {{ $project->type->title }}
-                                </a>
-
-                            @else
-                                -
-                            @endif
-    
-                        </div>
-
-                        <div class="mb-3">
-                            <div>
-                                Tecnologie:
-                                <br>
-                                @forelse ($project->technologies as $technology)
-                                    <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="badge rounded-pill text-bg-primary">
-                                        {{ $technology->title }}
-                                    </a>
-                                @empty
-                                    -
-                                @endforelse
-                            </div>
-                        </div>
-    
-                        <div>
-                            Creato il: 
-                            <span class="text-success">
-                                {{ $project->created_at->format('d/m/Y') }}
+                            <span>
+                                Linguaggio utilizzata:
                             </span>
                             <br>
-                            Alle: 
-                            <span>
-                                {{ $project->created_at->format('H:i')  }}
-                            </span>
+                            <a href="{{ route('types.show', ['type' => $project->type->slug]) }}"> 
+                                {{ $project->type->title }}
+                            </a>
+
+                        @else
+                            -
+                        @endif
+
+                    </div>
+
+                    {{-- Se il valore della colonna cover_img del singolo project è diverso da null --}}
+                    @if ($project->cover_img != null)
+                        <div class="mb-3">
+
+                            <img src="{{ asset('storage/'.$project->cover_img) }}" alt="{{ $project->title }}">
+
                         </div>
+                    @endif
+
+                    <div class="mb-3">
+                        <div>
+                            Tecnologie:
+                            <br>
+                            @forelse ($project->technologies as $technology)
+                                <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="badge rounded-pill text-bg-primary">
+                                    {{ $technology->title }}
+                                </a>
+                            @empty
+                                -
+                            @endforelse
+                        </div>
+                    </div>
+
+                    <div>
+                        Creato il: 
+                        <span class="text-success">
+                            {{ $project->created_at->format('d/m/Y') }}
+                        </span>
+                        <br>
+                        Alle: 
+                        <span>
+                            {{ $project->created_at->format('H:i')  }}
+                        </span>
+                    </div>
 
                     @if ($project['updated_at'] != $project['created_at'])
                         <div>
