@@ -58,6 +58,7 @@ class ProjectController extends Controller
         }
 
         $validatedProjectData['slug'] = Str::slug($validatedProjectData['title']);
+        $validatedProjectData['cover_img'] = $coverImgPath;
 
         $project = Project::create($validatedProjectData);
 
@@ -108,7 +109,33 @@ class ProjectController extends Controller
 
         $project = Project::where('slug', $slug)->firstOrFail();
 
+        // Assegno ad una variabile il valore della colonna cover_img dentro il singolo project
+        $coverImgPath = $project->cover_img;
+
+        // Se passiamo un valore all'input per la cover_img
+        if (isset($validatedProjectData['cover_img'])) {
+            // Se il valore della colonna cover_img dentro il singolo project è diverso da null
+            if ($project->cover_img != null) {
+                // Lo elimino
+                Storage::disk('public')->delete($project->cover_img);
+            }
+
+            // E gli assegno il nuovo valore passato
+            $coverImgPath = Storage::disk('public')->put('images', $validatedProjectData['cover_img']);
+
+        } 
+        // Altrimenti se abbiamo selezionato la checbox per eliminare la cover
+        else if(isset($validatedProjectData['delete_cover_img'])) {
+
+            // Elimino la cover dalla colonna di project
+            Storage::disk('public')->delete($project->cover_img);
+
+            // E assegno il suo valore a null
+            $coverImgPath = null;
+        }
+        
         $validatedProjectData['slug'] = Str::slug($validatedProjectData['title']);
+        $validatedProjectData['cover_img'] = $coverImgPath;
 
         $project->update($validatedProjectData);
 

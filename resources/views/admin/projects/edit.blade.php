@@ -11,7 +11,7 @@
                         modifica Progetto
                     </h1>
 
-                    <form action="{{ route('admin.projects.update',['project' => $project->slug])  }}" method="POST">
+                    <form action="{{ route('admin.projects.update',['project' => $project->slug])  }}" method="POST" enctype="multipart/form-data">
                         
                         @method('PUT')
 
@@ -25,6 +25,26 @@
                                 {{ $message }}
                             </div>
                         @enderror
+
+                        <label for="cover_img" class="form-label"> Cover Image </label>
+                        <input type="file" class="form-control" id="cover_img" name="cover_img">
+
+                        {{-- Se il progetto ha già una cover_img --}}
+                        @if ($project->cover_img != null)
+                            <div class="mt-2">
+                                <h4>
+                                    Cover attuale:
+                                </h4>
+                                <img src="{{ asset( 'storage/'.$project->cover_img) }}" alt="cover">
+                                {{-- Creo una checkbox per chiedere se voglio eliminare la cover --}}
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="1" id="delete_cover_img" name="delete_cover_img">
+                                    <label class="form-check-label" for="delete_cover_img">
+                                        Rimuovi immagine
+                                    </label>
+                                </div>
+                            </div>
+                        @endif
                         <label for="content" class="form-label">Descrizione</label>
                         <input type="text" class="form-control @error('content') is-invalid @enderror" id="content" name="content" placeholder="Inserisci la descrizione del progetto"
                             maxlength="1024" value="{{$project->content, old('content') }}">
