@@ -16,6 +16,7 @@ use App\Http\Requests\UpdateProjectRequest;
 
 // Helper
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -47,6 +48,14 @@ class ProjectController extends Controller
     {
         $validatedProjectData = $request->validated();
 
+        // Dichiaro una variabile a null
+        $coverImgPath = null;
+
+        // Se passo un'immagine all'input nella creazione di un nuovo progetto
+        if (isset($validatedProjectData['cover_img'])) {
+            // Assegno alla variabile il percorso per salvare l'immagine in un disco diverso da quello di default
+            $coverImgPath = Storage::disk('public')->put('images', $validatedProjectData['cover_img']);
+        }
 
         $validatedProjectData['slug'] = Str::slug($validatedProjectData['title']);
 

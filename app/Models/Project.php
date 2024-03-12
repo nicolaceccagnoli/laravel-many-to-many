@@ -15,6 +15,7 @@ class Project extends Model
         'content',
         'status',
         'type_id',
+        'cover_img',
     ];
     //Stabilisco la relazione con i Types  
     public function type() {
